@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Modern Links</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        /* --- RESET & BASIC SETUP --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            overflow: hidden; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* --- CONTAINER UTAMA (GLASSMORPHISM) --- */
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 400px;
+            height: 90vh;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            overflow-y: auto;
+            text-align: center;
+            scrollbar-width: none; 
+            display: flex;
+            flex-direction: column;
+        }
+        .container::-webkit-scrollbar { display: none; }
+
+        /* --- PROFILE SECTION --- */
+        .profile-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: transform 0.5s;
+        }
+
+        .profile-wrapper:hover .profile-img {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        /* --- VERIFIED BADGE (Centang Biru) --- */
+        .status {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 24px;
+            color: #0095f6;
+            background: white;
+            border-radius: 50%;
+            width: 24px;            
+            height: 24px;           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        p.bio {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* --- LINKS BUTTONS --- */
+        .link-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-grow: 1; /* Agar footer terdorong ke bawah jika konten sedikit */
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            text-decoration: none;
+            color: white;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+
+        .link-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* --- MUSIC PLAYER CONTROL --- */
+        .music-control {
+            margin-top: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            align-self: center;
+        }
+        
+        .music-control:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .music-icon {
+            font-size: 1.2rem;
+            animation: spin 3s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .music-text {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .playing .music-icon {
+            animation-play-state: running;
+            color: #2ecc71;
+        }
+
+        /* --- SOCIALS --- */
+        .socials {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .socials a {
+            color: white;
+            font-size: 1.5rem;
+            transition: 0.3s;
+            opacity: 0.7;
+        }
+        .socials a:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* --- FOOTER COPYRIGHT --- */
+        .footer-credit {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            opacity: 0.6;
+            letter-spacing: 1px;
+            font-weight: 300;
+            padding-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        <div class="profile-wrapper">
+            <img src="https://files.catbox.moe/9xoquo.jpg" alt="Avatar" class="profile-img">
+            <i class="ri-verified-badge-fill status"></i>
+        </div>
+
+        <h1>PRIME XUU</h1>
+        <p class="bio">Kalo belum punya apa" <br> Jangan punya siapa" dulu🙃</p>
+
+        <div class="link-box">
+            <a href="https://www.instagram.com/zyrexndraa?igsh=cGN3OTJ2ZGh6eTl3" target="_blank" class="link-btn">
+                <i class="ri-instagram-line"></i>
+                <span>Instagram</span>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+
+            <a href="https://tiktok.com" target="_blank" class="link-btn">
+                <i class="ri-tiktok-fill"></i>
+                <span>TikTok</span>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+
+            <a href="https://wa.me/6285823667680" target="_blank" class="link-btn">
+                <i class="ri-whatsapp-line"></i>
+                <span>WhatsApp</span>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+
+            <a href="https://primexuu-portopolio-phi.vercel.app" target="_blank" class="link-btn">
+                <i class="ri-global-line"></i>
+                <span>Website Resmi</span>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+        </div>
+
+        <div class="music-control" onclick="toggleMusic()">
+            <i class="ri-disc-line music-icon" id="musicIcon"></i>
+            <span class="music-text" id="musicText">Play Music</span>
+        </div>
+
+        <div class="socials">
+            <a href="#"><i class="ri-twitter-x-line"></i></a>
+            <a href="#"><i class="ri-youtube-fill"></i></a>
+            <a href="#"><i class="ri-mail-send-fill"></i></a>
+        </div>
+
+        <div class="footer-credit">
+            © 2025 By PRIME XUU⚡
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://files.catbox.moe/8hvc7a.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById("bgMusic");
+        const musicBtn = document.querySelector(".music-control");
+        const musicIcon = document.getElementById("musicIcon");
+        const musicText = document.getElementById("musicText");
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.classList.remove("playing");
+                musicText.innerText = "Play Music";
+                isPlaying = false;
+            } else {
+                music.play();
+                musicBtn.classList.add("playing");
+                musicText.innerText = "Pause Music";
+                isPlaying = true;
+            }
+        }
+        music.volume = 0.5;
+    </script>
+</body>
+</html>
